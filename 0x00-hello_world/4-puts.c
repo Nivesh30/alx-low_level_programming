@@ -1,9 +1,9 @@
 #include <stdio.h>
-/*
- * Out put text using puts
+
+/**
+ * main - Entry point
  *
- * returns: 0 at the end
- *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
