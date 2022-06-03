@@ -2,44 +2,23 @@
 
 /**
  *
- *  * main - entry point
+ * main - entry point
  *
- *   *
- *
- *    * Return: alway returns 0
- *
- *     */
-
+ * Return: 0 always (Success)
+ **/
 int main(void)
-
 {
+	char a;
+	int i;
 
-		char a;
-
-			int i;
-
-
-
-				for (i = 0; i < 10; i++)
-
-						{
-
-									putchar('0' + i);
-
-										}
-
-					
-
-					for (a = 'a'; a < 'g'; a++)
-
-							{
-
-										putchar(a);
-
-											}
-
-						putchar('\n');
-
-							return (0);
-
+	for (i = 0; i < 10; i++)
+	{
+		putchar('0' + i);
+	}
+	for (a = 'a'; a < 'g'; a++)
+	{
+		putchar(a);
+	}
+	putchar('\n');
+	return (0);
 }
