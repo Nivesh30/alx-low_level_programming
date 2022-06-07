@@ -4,7 +4,7 @@
  *
  * @c: character input
  *
- * Retrun: 0 always
+ * Return: 0 always
  */
 int _isalpha(int c)
 {
