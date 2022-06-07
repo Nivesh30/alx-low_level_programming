@@ -1,9 +1,7 @@
 #include "main.h"
-
 /**
  * print_times_table - prints out time table
  * @n: integer entered
- *
  */
 void print_times_table(int n)
 {
@@ -21,24 +19,21 @@ void print_times_table(int n)
 				if (b == 0)
 				{
 					_putchar('0');
-				}
-				else if (mul <= 9)
+				} else if (mul <= 9)
 				{
 					_putchar(',');
 					_putchar(' ');
 					_putchar(' ');
 					_putchar(' ');
 					_putchar('0' + mul);
-				}
-				else if (mul > 99)
+				} else if (mul > 99)
 				{
 					_putchar(',');
 					_putchar(' ');
 					_putchar('0' + (mul / 100));
 					_putchar('0' + ((mul / 10) % 10));
 					_putchar('0' + (mul % 10));
-				}
-				else
+				} else
 				{
 					_putchar(',');
 					_putchar(' ');
