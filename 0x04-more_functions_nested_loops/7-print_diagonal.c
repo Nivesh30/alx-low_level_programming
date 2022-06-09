@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * print_diagonal - prints spaces and \
- * @n: number of \
- * Return: the number of \
+ * print_diagonal - prints spaces and backslash
+ * @n: number of backslash
+ * Return: the number of spaces and backslash
  */
-
 void print_diagonal(int n)
 {
 	int i;
