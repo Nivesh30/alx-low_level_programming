@@ -7,7 +7,7 @@
  * @b: number two
  * Return: the multiplication of a and b
  */
-int mul_int(int a, int b)
+int mul(int a, int b)
 {
 	return (a * b);
 }
