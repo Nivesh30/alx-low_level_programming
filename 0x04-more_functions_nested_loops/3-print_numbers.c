@@ -2,9 +2,10 @@
 #include <stdio.h>
 
 /**
- * print_number - prints number 0 - 9
+ * print_numbers - prints number 0 - 9
  * Return: void
  */
+
 void print_numbers(void)
 {
 	int i;
