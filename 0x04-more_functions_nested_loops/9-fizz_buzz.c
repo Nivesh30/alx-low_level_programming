@@ -1,9 +1,7 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
  * main - entry point
- *
  * Return: 0 Always
  */
 int main(void)
@@ -29,5 +27,6 @@ int main(void)
 			printf("%d ", i);
 		}
 	}
+	printf("\n");
 	return (0);
 }
