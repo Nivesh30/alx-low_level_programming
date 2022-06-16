@@ -1,14 +1,17 @@
 #include "main.h"
-/*
+
+/**
  * _strncat - concatenate two strings
  * @dest: string to be appended
  * @src: string to be completed
  * @n:integer
+ *
  * Return: pointer
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int index = 0, dest_len = 0;
+	int index = 0;
+	int dest_len = 0;
 
 	while (dest[index++])
 	{
