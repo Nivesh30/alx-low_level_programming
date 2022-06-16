@@ -1,72 +1,20 @@
 #include "main.h"
 
-
-
-/**
- *
- *  * rev_string - reverse array
- *
- *   * @n: integer params
- *
- *    * Return: 0
- *
- *     */
-
-
-
-void rev_string(char *n)
-
-{
-
-	int e = 0;
-
-	int f = 0;
-
-	char temp;
-
-
-
-	while (*(n + e) != '\0')
-
-	{
-
-		e++;
-
-	}
-
-	e--;
-
-
-
-	for (f = 0; f < e; f++, e--)
-
-	{
-
-		temp = *(n + f);
-
-		*(n + f) = *(n + e);
-
-		*(n + e) = temp;
-
-	}
-
-}
-
-
+#include <stdio.h>
 
 /**
  *
- *  * infinite_add - add 2 numbers together
+ *  * infinite_add - adds two numbers
  *
- *   * @n1: text representation of 1st number to add
+ *   * @n1: number one.
  *
- *    * @n2: text representation of 2nd number to add
+ *    * @n2: number two.
  *
- *     * @r: pointer to buffer
+ *     * @r: buffer that the function will use to store the result.
  *
- *      * @size_r: buffer size
+ *      * @size_r: buffer size:
  *
- *       * Return: pointer to calling function
+ *       * Return: the pointer to dest.
  *
  *        */
 
@@ -76,80 +24,84 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 {
 
-	int overflow = 0, e = 0, f = 0, digits = 0;
-
-	int val1 = 0, val2 = 0, temp_tot = 0;
+		int c1 = 0, c2 = 0, op, bg, dr1, dr2, add = 0;
 
 
 
-	while (*(n1 + e) != '\0')
+			while (*(n1 + c1) != '\0')
 
-		e++;
+						c1++;
 
-	while (*(n2 + f) != '\0')
+				while (*(n2 + c2) != '\0')
 
-		f++;
+							c2++;
 
-	e--;
+					if (c1 >= c2)
 
-	f--;
+								bg = c1;
 
-	if (f >= size_r || e >= size_r)
+						else
 
-		return (0);
+									bg = c2;
 
-	while (f >= 0 || e >= 0 || overflow == 1)
+							if (size_r <= bg + 1)
 
-	{
+										return (0);
 
-		if (e < 0)
+								r[bg + 1] = '\0';
 
-			val1 = 0;
+									c1--, c2--, size_r--;
 
-		else
+										dr1 = *(n1 + c1) - 48, dr2 = *(n2 + c2) - 48;
 
-			val1 = *(n1 + e) -'0';
+											while (bg >= 0)
 
-		if (f < 0)
+													{
 
-			val2 = 0;
+																op = dr1 + dr2 + add;
 
-		else
+																		if (op >= 10)
 
-			val2 = *(n2 + f) -'0';
+																						add = op / 10;
 
-		temp_tot = val1 + val2 + overflow;
+																				else
 
-		if (temp_tot >= 10)
+																								add = 0;
 
-			overflow = 1;
+																						if (op > 0)
 
-		else
+																									*(r + bg) = (op % 10) + 48;
 
-			overflow = 0;
+																								else
 
-		if (digits >= (size_r - 1))
+																												*(r + bg) = '0';
 
-			return (0);
+																										if (c1 > 0)
 
-		*(r + digits) = (temp_tot % 10) + '0';
+																														c1--, dr1 = *(n1 + c1) - 48;
 
-		digits++;
+																												else
 
-		f--;
+																																dr1 = 0;
 
-		e--;
+																														if (c2 > 0)
 
-	}
+																																		c2--, dr2 = *(n2 + c2) - 48;
 
-	if (digits == size_r)
+																																else
 
-		return (0);
+																																				dr2 = 0;
 
-	*(r + digits) = '\0';
+																																		bg--, size_r--;
 
-	rev_string(r);
+																																			}
 
-	return (r);
+												if (*(r) == '0')
+
+															return (r + 1);
+
+													else
+
+																return (r);
 
 }
