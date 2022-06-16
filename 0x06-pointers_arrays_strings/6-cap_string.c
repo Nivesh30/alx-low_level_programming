@@ -2,7 +2,7 @@
 #include <stdio.h>
 /**
  * cap_string - capitilize words
- * @str: string
+ * @a: string
  * Return: capitlized string
  */
 char *cap_string(char *a)
