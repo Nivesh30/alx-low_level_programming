@@ -1,25 +1,24 @@
 #include "main.h"
 /**
  * leet - function
- * @str:string
+ * @a: string
  * Return: string
  */
-char *leet(char *str)
+char *leet(char *a)
 {
-	int index1 = 0;
-	int index2;
-	char leet[8] = {'O', 'L', '?', 'E', 'A', '?', '?', 'T'};
+	char leet[] = "aAeEoOtTlL";
+	char chan[] = "4433007711";
+	int i, j;
 
-	while (str[++index1])
+	for (i = 0; a[i] != '\0'; i++)
 	{
-		for (index2 = 0; index2 <= 7; index2++)
+		for (j = 0; leet[j] != '\0'; j++)
 		{
-			if (str[index1] == leet[index2] ||
-					str[index1] - 32 == leet[index2])
+			if (a[i] == leet[j])
 			{
-				str[index1] = index2 + '0';
+				a[i] = chan[j];
 			}
 		}
 	}
-	return (str);
+	return (a);
 }
