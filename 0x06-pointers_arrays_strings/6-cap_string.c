@@ -1,30 +1,34 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * cap_string - capitilize words
  * @str: string
  * Return: capitlized string
  */
-char *cap_string(char *str)
+char *cap_string(char *a)
 {
-	int e = 0;
-	int f = 0;
-	char c[] = {44, 59, 46, 33, 63, 34, 40, 41, 123, 125, 32, 10, 9};
+	char separator[] = " \t\n,;.!?\"(){}";
+	int i, j;
 
-	while (str[e] != '\0')
+	for (i = 0; a[i] != '\0'; i++)
 	{
-		if (e == 0 && str[e] >= 97 && str[e] <= 122)
+		if (a[i] >= 'a' && a[i] <= 'z')
 		{
-			str[e] = str[e] - 32;
-		}
-		while (c[f] != '\0')
-		{
-			if (c[f] == str[e] && (str[e + 1] >= 97 && str[e + 1] <= 122))
+			if (i == 0)
 			{
-				str[e + 1] = str[e + 1] - 32;
+				a[i] -= 32;
 			}
-			f++;
+			else
+			{
+				for (j = 0; separator[j] != '\0'; j++)
+				{
+					if (a[i - 1] == separator[j])
+					{
+						a[i] -= 32;
+					}
+				}
+			}
 		}
-		e++;
 	}
-	return (str);
+	return (a);
 }
