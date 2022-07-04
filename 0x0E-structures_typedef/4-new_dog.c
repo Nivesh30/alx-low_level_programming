@@ -1,76 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "dog.h"
 
 /**
-*_strlen - returns length of
-*a string
-*@str: string to be counted
-*Return: returns length of string
-*/
-int _strlen(char *str)
+ * len - find length of string
+ * @str: string
+ * Return: length
+ */
+int len(char *str)
 {
-int len = 0;
-while (str)
-len++;
+	int i;
 
-return (len);
+	for (i = 0; *(str + i); i++)
+		;
+	return (i);
 }
-
 /**
-*_strcopy - copy string pointed by src
-*into dest variable
-*@dest:buffer storing string copy
-*@src: buffer storing string to copy
-*Return:returns copied string
-*/
-char *_strcopy(char *dest, char *src)
+ * strcpy - copies the string pointed to by src,
+ * including the terminating null byte (\0),
+ * to the buffer pointed to by dest
+ * @dest: copy source to this buffer
+ * @src: this is the source to copy
+ * Return: copy of original source
+ */
+char *strcpy(char *dest, char *src)
 {
-int index = 0;
+	int i;
 
-for (; src[index] ; index++)
-dest[index] = src[index];
-
-dest[index] = '\0';
-return (dest);
+	for (i = 0; i <= len(src); i++)
+		dest[i] = src[i];
+	return (dest);
 }
-
 /**
-*new_dog - creates a new dog
-*@name: name of new dog
-*@age: age of new dog
-*@owner: owner of new dog
-*Return: returns NULL in case
-*of failure
-*/
-
+ * new_dog - create new instance of struct dog
+ * @name: member
+ * @age: member
+ * @owner: member
+ * Return: initialized instance of struct dog
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-dog_t *doggo;
+	dog_t *dog1;
+	char *copy_of_name;
+	char *copy_of_owner;
 
-if (name == NULL || age < 0 || owner == NULL)
-return (NULL);
+	dog1 = malloc(sizeof(dog_t)); /* validate if dog1 initiated correctly */
+	if (dog1 == NULL)
+		return (NULL);
 
-doggo = malloc(sizeof(dog_t));
-if (doggo == NULL)
-return (NULL);
+	dog1->age = age;
 
-doggo->name = malloc(sizeof(char) * (_strlen(name) + 1));
-if (doggo->name == NULL)
-{
-free(doggo);
-return (NULL);
-}
+	/* make copies of struct members and validate, else free on error */
+	/* set values of struct members to copies of arguments or set to NULL */
+	if (name != NULL)
+	{
+		copy_of_name = malloc(len(name) + 1);
+		if (copy_of_name == NULL)
+		{
+			free(dog1);
+			return (NULL);
+		}
+		dog1->name = strcpy(copy_of_name, name);
+	}
+	else
+		dog1->name = NULL;
 
-doggo->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-if (doggo->owner == NULL)
-{
-free(doggo->name);
-free(doggo);
-return (NULL);
-}
+	if (owner != NULL)
+	{
+		copy_of_owner = malloc(len(owner) + 1);
+		if (copy_of_owner == NULL)
+		{
+			free(copy_of_name);
+			free(dog1);
+			return (NULL);
+		}
+		dog1->owner = strcpy(copy_of_owner, owner);
+	}
+	else
+		dog1->owner = NULL;
 
-doggo->name = _strcopy(doggo->name, name);
-doggo->age = age;
-doggo->owner = _strcopy(doggo->owner, owner);
-
-return (doggo);
+	return (dog1);
 }
